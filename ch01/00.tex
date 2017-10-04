@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{luacode}
+\begin{document}
+foo $\pi = \luadirect{tex.sprint(math.pi)} $ \newline
+foo $\pi = \luaexec{tex.sprint(math.pi)} $
+
+\LuaCodeDebugOn % Write to log file
+\luaexec{pi = math.pi}
+\begin{luacode*}
+a = "\\" -- a contains a single backslash
+b = [[\\]] -- b contains two backslashes
+c = "\\\\" -- c contains two backslashes too
+d = "line one\nline two" -- d contains a newline character
+e = [[single line]] -- e contains no newline character
+tex.sprint(e)
+\end{luacode*}
+\LuaCodeDebugOff
+\end{document}

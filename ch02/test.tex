@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{luacode}
+\begin{document}\parindent0pt\thispagestyle{empty}
+test
+
+Callbacks list and their status:\par
+\def\zzz#1#2{\hbox to12pc{\textbf{\detokenize{#1}}(#2)}}
+\begin{luacode}
+  info = callback.list()
+  for i, e in pairs(info) do
+    print(i, e) -- print to log file
+    tex.sprint('\\zzz{' .. i .. '}{' .. tostring(e) .. '}\\par')
+  end
+\end{luacode}
+
+
+\end{document}
+
